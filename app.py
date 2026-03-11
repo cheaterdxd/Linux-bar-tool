@@ -404,7 +404,7 @@ def main():
 
     app = Gtk.Application(
         application_id=APP_ID,
-        flags=Gio.ApplicationFlags.FLAGS_NONE,
+        flags=Gio.ApplicationFlags.NON_UNIQUE,
     )
     app.connect("activate", on_activate)
     return app.run(sys.argv)

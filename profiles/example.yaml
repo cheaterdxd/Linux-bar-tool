@@ -1,0 +1,6 @@
+name: "System Check Example"
+script: "/bin/bash"
+sudo_mode: 0
+args:
+  - "-c"
+  - "echo '========================================'; echo '  Exec Launcher - Test Profile'; echo '========================================'; echo ''; echo 'Hostname:' $(hostname); echo 'Kernel:' $(uname -r); echo 'Uptime:' $(uptime -p); echo ''; echo 'Done! Press Enter to close.'; read"

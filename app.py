@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # =============================================================================
 # EXEC LAUNCHER - Lightweight Script Launcher for Linux Desktop
 # Platform: Debian 13 / GNOME / GTK4

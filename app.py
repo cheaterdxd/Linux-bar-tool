@@ -247,7 +247,7 @@ class AppWindow(Gtk.ApplicationWindow):
         self.set_resizable(True)
 
         # --- Toast overlay (wraps entire window content) ---
-        self.toast_overlay = Gtk.ToastOverlay()
+        self.toast_overlay = Adw.ToastOverlay()
         self.set_child(self.toast_overlay)
 
         # --- Main vertical box ---
@@ -316,10 +316,10 @@ class AppWindow(Gtk.ApplicationWindow):
 
     def show_toast(self, message, is_success=False):
         """Show a toast notification in-app and send a system notification."""
-        toast = Gtk.Toast.new(message)
+        toast = Adw.Toast.new(message)
         toast.set_timeout(3)
         if is_success:
-            toast.set_priority(Gtk.ToastPriority.HIGH)
+            toast.set_priority(Adw.ToastPriority.HIGH)
         self.toast_overlay.add_toast(toast)
 
         # System notification

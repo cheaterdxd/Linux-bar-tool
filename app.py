@@ -35,7 +35,7 @@ except (ImportError, ValueError) as e:
 # CONFIGURATION
 # =============================================================================
 APP_ID = "com.example.execlauncher"
-APP_NAME = "Exec Launcher"
+APP_NAME = "UltraShortcut"
 APP_VERSION = "1.0.0"
 
 CONFIG_DIR = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config")) / "exec_launcher"
@@ -262,7 +262,7 @@ class AppWindow(Gtk.ApplicationWindow):
         self.toast_overlay.set_child(main_box)
 
         # --- Header label ---
-        header = Gtk.Label(label="⚡ Exec Launcher")
+        header = Gtk.Label(label="⚡ UltraShortcut")
         header.add_css_class("title-2")
         header.set_halign(Gtk.Align.START)
         main_box.append(header)

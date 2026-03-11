@@ -15,12 +15,13 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 # --- CONFIGURATION ---
-APP_NAME="Exec Launcher"
+APP_NAME="UltraShortcut"
 INSTALL_DIR="$HOME/.local/share/exec-launcher"
 CONFIG_DIR="$HOME/.config/exec_launcher"
 PROFILES_DIR="$CONFIG_DIR/profiles"
 DESKTOP_FILE="$HOME/.local/share/applications/exec-launcher.desktop"
-ICON_NAME="utilities-terminal"
+ICON_DIR="$HOME/.local/share/icons/hicolor/256x256/apps"
+ICON_FILE="$ICON_DIR/ultrashortcut.png"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo -e "${BLUE}=========================================${NC}"
@@ -85,6 +86,13 @@ echo "   - Profiles: $PROFILES_DIR"
 echo ""
 echo -e "${YELLOW}[3/6] Installing application...${NC}"
 
+# Copy the icon
+if [ -f "$SCRIPT_DIR/ultrashortcut.png" ]; then
+    mkdir -p "$ICON_DIR"
+    cp "$SCRIPT_DIR/ultrashortcut.png" "$ICON_FILE"
+    echo -e "${GREEN}✓ Installed custom icon${NC}"
+fi
+
 # Copy the app from repository
 if [ -f "$SCRIPT_DIR/app.py" ]; then
     cp "$SCRIPT_DIR/app.py" "$INSTALL_DIR/app.py"
@@ -108,7 +116,7 @@ Type=Application
 Name=$APP_NAME
 Comment=Manage and launch scripts via profiles
 Exec=$INSTALL_DIR/app.py
-Icon=$ICON_NAME
+Icon=$ICON_FILE
 Terminal=false
 Categories=Utility;System;
 StartupNotify=true

@@ -389,18 +389,10 @@ class AppWindow(Gtk.ApplicationWindow):
 # =============================================================================
 # APPLICATION
 # =============================================================================
-class ExecLauncherApp(Gtk.Application):
-    """GTK4 Application class."""
-
-    def __init__(self):
-        super().__init__(
-            application_id=APP_ID,
-            flags=Gio.ApplicationFlags.FLAGS_NONE,
-        )
-
-    def do_activate(self):
-        win = AppWindow(self)
-        win.present()
+def on_activate(app):
+    """Called when the application is activated."""
+    win = AppWindow(app)
+    win.present()
 
 
 # =============================================================================
@@ -410,7 +402,11 @@ def main():
     # Create template on first run
     ConfigManager.create_template()
 
-    app = ExecLauncherApp()
+    app = Gtk.Application(
+        application_id=APP_ID,
+        flags=Gio.ApplicationFlags.FLAGS_NONE,
+    )
+    app.connect("activate", on_activate)
     return app.run(sys.argv)
 
 
